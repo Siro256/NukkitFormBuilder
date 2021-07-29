@@ -2,14 +2,13 @@ package dev.siro256.nukkitformbuilder
 
 import cn.nukkit.form.element.Element
 import cn.nukkit.form.element.ElementButtonImageData
-import cn.nukkit.form.window.FormWindow
 import cn.nukkit.form.window.FormWindowCustom
 
 @Suppress("unused")
-class CustomFormBuilder: FormBuilder() {
+open class CustomFormBuilder: FormBuilder() {
     private val contents = mutableListOf<Element>()
-    private var iconType: FormIconType? = null
-    private var iconData: Any? = null
+    var iconType: FormIconType? = null
+    var iconData: Any? = null
 
     override fun build(): FormWindowCustom {
         if (iconType == null) return FormWindowCustom(title, contents)
@@ -19,7 +18,7 @@ class CustomFormBuilder: FormBuilder() {
         }
     }
 
-    fun addContent(content: Element): CustomFormBuilder {
+    open fun addContent(content: Element): CustomFormBuilder {
         contents.add(content)
         return this
     }
