@@ -8,6 +8,7 @@ abstract class FormBuilder {
     abstract fun build(): FormWindow
 }
 
+@Suppress("unused")
 fun <T: FormBuilder> T.setTitle(title: String): T {
     this.title = title
     return this

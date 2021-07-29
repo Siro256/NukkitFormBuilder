@@ -2,6 +2,7 @@ package dev.siro256.nukkitformbuilder
 
 import cn.nukkit.form.window.FormWindowModal
 
+@Suppress("unused")
 open class ModalFormBuilder: FormBuilder() {
     var displayMessage = ""
     private var trueButtonMessage = ""
