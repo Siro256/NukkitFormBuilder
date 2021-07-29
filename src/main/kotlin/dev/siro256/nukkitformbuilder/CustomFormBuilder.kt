@@ -11,7 +11,7 @@ class CustomFormBuilder: FormBuilder() {
     private var iconType: FormIconType? = null
     private var iconData: Any? = null
 
-    override fun build(): FormWindow {
+    override fun build(): FormWindowCustom {
         if (iconType == null) return FormWindowCustom(title, contents)
         return when(iconType!!) {
             FormIconType.IMAGE_DATA -> FormWindowCustom(title, contents, iconData as ElementButtonImageData)
