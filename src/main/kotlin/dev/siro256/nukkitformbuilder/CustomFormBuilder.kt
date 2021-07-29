@@ -7,8 +7,8 @@ import cn.nukkit.form.window.FormWindowCustom
 @Suppress("unused")
 open class CustomFormBuilder: FormBuilder() {
     private val contents = mutableListOf<Element>()
-    var iconType: FormIconType? = null
-    var iconData: Any? = null
+    protected var iconType: FormIconType? = null
+    protected var iconData: Any? = null
 
     override fun build(): FormWindowCustom {
         if (iconType == null) return FormWindowCustom(title, contents)

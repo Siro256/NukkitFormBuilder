@@ -5,7 +5,7 @@ import cn.nukkit.form.window.FormWindowSimple
 
 @Suppress("unused")
 open class SimpleFormBuilder: FormBuilder() {
-    var displayMessage = ""
+    protected var displayMessage = ""
     private val buttons = mutableListOf<ElementButton>()
 
     override fun build(): FormWindowSimple {

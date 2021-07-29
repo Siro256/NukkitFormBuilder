@@ -4,7 +4,7 @@ import cn.nukkit.form.window.FormWindowModal
 
 @Suppress("unused")
 open class ModalFormBuilder: FormBuilder() {
-    var displayMessage = ""
+    protected var displayMessage = ""
     private var trueButtonMessage = ""
     private var falseButtonMessage = ""
 
