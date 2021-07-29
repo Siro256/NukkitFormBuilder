@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.siro256"
-version = "1.0.2"
+version = "1.1.0-SNAPSHOT"
 description = "Form builder for Nukkit1.0"
 val projectLocation = "Sirrrrrro/NukkitFormBuilder"
 
