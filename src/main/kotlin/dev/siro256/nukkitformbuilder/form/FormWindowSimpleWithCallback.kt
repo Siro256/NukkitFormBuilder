@@ -6,7 +6,6 @@ import cn.nukkit.form.response.FormResponseSimple
 import cn.nukkit.form.window.FormWindowSimple
 import com.google.gson.annotations.SerializedName
 import dev.siro256.nukkitformbuilder.SimpleFormBuilder
-import kotlin.reflect.KProperty1
 
 @Suppress("unused")
 class FormWindowSimpleWithCallback(
