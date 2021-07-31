@@ -66,6 +66,6 @@ class FormWindowModalWithCallback(
 
 data class FormResponseModalWithCallback(
     @get:JvmName("getClickedButtonId_") @SerializedName("clickedButtonId_") val clickedButtonId: Int,
-    @get:JvmName("getClickedButtonText_") val clickedButtonText: String,
+    @get:JvmName("getClickedButtonText_") @SerializedName("clickedButtonText_") val clickedButtonText: String,
     val onClick: (PlayerFormRespondedEvent) -> Unit
 ): FormResponseModal(clickedButtonId, clickedButtonText)
