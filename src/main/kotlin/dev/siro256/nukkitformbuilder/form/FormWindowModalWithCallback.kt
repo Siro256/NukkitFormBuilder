@@ -3,6 +3,7 @@ package dev.siro256.nukkitformbuilder.form
 import cn.nukkit.event.player.PlayerFormRespondedEvent
 import cn.nukkit.form.response.FormResponseModal
 import cn.nukkit.form.window.FormWindowModal
+import com.google.gson.annotations.SerializedName
 import dev.siro256.nukkitformbuilder.ModalFormBuilder
 
 @Suppress("unused")
@@ -64,7 +65,7 @@ class FormWindowModalWithCallback(
 }
 
 data class FormResponseModalWithCallback(
-    @get:JvmName("getClickedButtonId_") val clickedButtonId: Int,
+    @get:JvmName("getClickedButtonId_") @SerializedName("clickedButtonId_") val clickedButtonId: Int,
     @get:JvmName("getClickedButtonText_") val clickedButtonText: String,
     val onClick: (PlayerFormRespondedEvent) -> Unit
 ): FormResponseModal(clickedButtonId, clickedButtonText)

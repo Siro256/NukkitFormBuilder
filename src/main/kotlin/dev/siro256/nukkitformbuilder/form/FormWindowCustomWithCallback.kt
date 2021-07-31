@@ -6,6 +6,7 @@ import cn.nukkit.form.response.FormResponseCustom
 import cn.nukkit.form.response.FormResponseData
 import cn.nukkit.form.window.FormWindowCustom
 import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
 import dev.siro256.nukkitformbuilder.CustomFormBuilder
 import dev.siro256.nukkitformbuilder.FormIconType
@@ -165,12 +166,12 @@ class FormWindowCustomWithCallback(
 }
 
 data class FormResponseCustomWithCallback(
-    @get:JvmName("getResponses_") val responses: HashMap<Int, Any>,
-    @get:JvmName("getDropdownResponses_") val dropdownResponses: HashMap<Int, FormResponseData>,
-    @get:JvmName("getInputResponses_") val inputResponses: HashMap<Int, String>,
-    @get:JvmName("getSliderResponses_") val sliderResponses: HashMap<Int, Float>,
-    @get:JvmName("getStepSliderResponses_") val stepSliderResponses: HashMap<Int, FormResponseData>,
-    @get:JvmName("getToggleResponses_") val toggleResponses: HashMap<Int, Boolean>,
-    @get:JvmName("getLabelResponses_") val labelResponses: HashMap<Int, String>,
+    @get:JvmName("getResponses_") @SerializedName("responses_") val responses: HashMap<Int, Any>,
+    @get:JvmName("getDropdownResponses_") @SerializedName("dropdownResponses_") val dropdownResponses: HashMap<Int, FormResponseData>,
+    @get:JvmName("getInputResponses_") @SerializedName("inputResponses_") val inputResponses: HashMap<Int, String>,
+    @get:JvmName("getSliderResponses_") @SerializedName("sliderResponses_") val sliderResponses: HashMap<Int, Float>,
+    @get:JvmName("getStepSliderResponses_") @SerializedName("stepSliderResponses_") val stepSliderResponses: HashMap<Int, FormResponseData>,
+    @get:JvmName("getToggleResponses_") @SerializedName("toggleResponses_") val toggleResponses: HashMap<Int, Boolean>,
+    @get:JvmName("getLabelResponses_") @SerializedName("labelResponses_") val labelResponses: HashMap<Int, String>,
     val onClick: (PlayerFormRespondedEvent) -> Unit
 ): FormResponseCustom(responses, dropdownResponses, inputResponses, sliderResponses, stepSliderResponses, toggleResponses, labelResponses)

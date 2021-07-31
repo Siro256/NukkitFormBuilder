@@ -4,6 +4,7 @@ import cn.nukkit.event.player.PlayerFormRespondedEvent
 import cn.nukkit.form.element.ElementButton
 import cn.nukkit.form.response.FormResponseSimple
 import cn.nukkit.form.window.FormWindowSimple
+import com.google.gson.annotations.SerializedName
 import dev.siro256.nukkitformbuilder.SimpleFormBuilder
 import kotlin.reflect.KProperty1
 
@@ -73,7 +74,7 @@ class FormWindowSimpleWithCallback(
 }
 
 data class FormResponseSimpleWithCallback(
-    @get:JvmName("getClickedButtonId_") val clickedButtonId: Int,
-    @get:JvmName("getClickedButton_") val clickedButton: ElementButton?,
+    @get:JvmName("getClickedButtonId_") @SerializedName("clickedButtonId_") val clickedButtonId: Int,
+    @get:JvmName("getClickedButton_") @SerializedName("clickedButton_") val clickedButton: ElementButton?,
     val onClick: (PlayerFormRespondedEvent) -> Unit
 ): FormResponseSimple(clickedButtonId, clickedButton)
