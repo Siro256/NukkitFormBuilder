@@ -19,7 +19,6 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation(kotlin("reflect"))
     implementation("cn.nukkit:nukkit:1.0-SNAPSHOT")
     dokkaJavadocPlugin("org.jetbrains.dokka:javadoc-plugin:1.4.32")
     dokkaHtmlPlugin("org.jetbrains.dokka:dokka-base:1.4.32")
