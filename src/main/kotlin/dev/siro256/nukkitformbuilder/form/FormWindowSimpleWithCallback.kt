@@ -15,7 +15,7 @@ class FormWindowSimpleWithCallback(
 ): FormWindowSimple(title, content, buttonsWithCallback.map { it.first }) {
     constructor(title: String, content: String): this(title, content, emptyList<Pair<ElementButton, (PlayerFormRespondedEvent) -> Unit>>())
 
-    @Suppress("UNCHECKED_CAST") @get:JvmName("getButtons_")
+    @Suppress("UNCHECKED_CAST") @get:JvmName("getButtons_") @SerializedName("buttons_")
     val buttons = buttonsWithCallback.map { it.first } as MutableList<ElementButton>
     private val callbacks = buttonsWithCallback.map { it.second }
     private var callback: (PlayerFormRespondedEvent) -> Unit = {}
