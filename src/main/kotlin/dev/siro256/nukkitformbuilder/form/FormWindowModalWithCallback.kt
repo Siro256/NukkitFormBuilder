@@ -13,7 +13,7 @@ class FormWindowModalWithCallback(
     private var trueButtonTextWithCallback: Pair<String, (PlayerFormRespondedEvent) -> Unit>,
     private var falseButtonTextWithCallback: Pair<String, (PlayerFormRespondedEvent) -> Unit>
 ): FormWindowModal(title, content, trueButtonTextWithCallback.first, falseButtonTextWithCallback.first) {
-    private var response: FormResponseModalWithCallback? = null
+    @SerializedName("response_") private var response: FormResponseModalWithCallback? = null
 
     override fun getResponse(): FormResponseModalWithCallback? {
         return response

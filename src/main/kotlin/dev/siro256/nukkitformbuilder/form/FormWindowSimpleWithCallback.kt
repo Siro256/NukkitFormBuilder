@@ -19,7 +19,7 @@ class FormWindowSimpleWithCallback(
     val buttons = buttonsWithCallback.map { it.first } as MutableList<ElementButton>
     private val callbacks = buttonsWithCallback.map { it.second }
     private var callback: (PlayerFormRespondedEvent) -> Unit = {}
-    private var response: FormResponseSimpleWithCallback? = null
+    @SerializedName("response_")  private var response: FormResponseSimpleWithCallback? = null
 
     override fun getButtons(): List<ElementButton> {
         return buttons

@@ -25,7 +25,7 @@ class FormWindowCustomWithCallback(
     private val contents = contentsWithCallback.map { it.first } as MutableList<Element>
     private val callbacks = contentsWithCallback.map { it.second }
     private var callback: (PlayerFormRespondedEvent) -> Unit = {}
-    private var response: FormResponseCustomWithCallback? = null
+    @SerializedName("response_") private var response: FormResponseCustomWithCallback? = null
 
     override fun getElements(): List<Element> {
         return contents
