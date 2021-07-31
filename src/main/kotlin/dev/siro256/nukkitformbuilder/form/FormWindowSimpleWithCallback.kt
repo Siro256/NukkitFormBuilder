@@ -16,10 +16,18 @@ class FormWindowSimpleWithCallback(
     constructor(title: String, content: String): this(title, content, emptyList<Pair<ElementButton, (PlayerFormRespondedEvent) -> Unit>>())
 
     @Suppress("UNCHECKED_CAST") @get:JvmName("getButtons_")
-    val buttons = let { this::class.members.first { it.name == "buttons" } as KProperty1<Any, *> }.get(this) as List<ElementButton>
+    val buttons = buttonsWithCallback.map { it.first } as MutableList<ElementButton>
     private val callbacks = buttonsWithCallback.map { it.second }
     private var callback: (PlayerFormRespondedEvent) -> Unit = {}
     private var response: FormResponseSimpleWithCallback? = null
+
+    override fun getButtons(): List<ElementButton> {
+        return buttons
+    }
+
+    override fun addButton(button: ElementButton) {
+        buttons.add(button)
+    }
 
     override fun getResponse(): FormResponseSimpleWithCallback? {
         return if (response == null) null else FormResponseSimpleWithCallback(

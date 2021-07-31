@@ -9,7 +9,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dev.siro256.nukkitformbuilder.CustomFormBuilder
 import dev.siro256.nukkitformbuilder.FormIconType
-import kotlin.reflect.KProperty1
 
 @Suppress("unused")
 class FormWindowCustomWithCallback(
@@ -22,10 +21,18 @@ class FormWindowCustomWithCallback(
     constructor(title: String, contentsWithCallback: List<Pair<Element, (PlayerFormRespondedEvent) -> Unit>>, icon: String): this(title, contentsWithCallback, ElementButtonImageData(ElementButtonImageData.IMAGE_DATA_TYPE_URL, icon))
 
     @Suppress("UNCHECKED_CAST")
-    private val contents = let { this::class.members.first { it.name == "content" } as KProperty1<Any, *> }.get(this) as List<Element>
+    private val contents = contentsWithCallback.map { it.first } as MutableList<Element>
     private val callbacks = contentsWithCallback.map { it.second }
     private var callback: (PlayerFormRespondedEvent) -> Unit = {}
     private var response: FormResponseCustomWithCallback? = null
+
+    override fun getElements(): List<Element> {
+        return contents
+    }
+
+    override fun addElement(element: Element) {
+        contents.add(element)
+    }
 
     override fun getResponse(): FormResponseCustomWithCallback? {
         return if (response == null) null else FormResponseCustomWithCallback(
@@ -109,6 +116,29 @@ class FormWindowCustomWithCallback(
         }
 
         response = FormResponseCustomWithCallback(responses, dropdownResponses, inputResponses, sliderResponses, stepSliderResponses, toggleResponses, labelResponses, callback)
+    }
+
+    override fun setElementsFromResponse() {
+        if (this.response == null) return
+        this.response!!.getResponses().forEach { (i: Int, response: Any) ->
+            when (val e = contents[i]) {
+                is ElementDropdown -> {
+                    e.defaultOptionIndex = e.options.indexOf(response)
+                }
+                is ElementInput -> {
+                    e.defaultText = response as String
+                }
+                is ElementSlider -> {
+                    e.defaultValue = (response as Float)
+                }
+                is ElementStepSlider -> {
+                    e.setDefaultOptionIndex(e.steps.indexOf(response))
+                }
+                is ElementToggle -> {
+                    e.isDefaultValue = (response as Boolean)
+                }
+            }
+        }
     }
 
     class Builder: CustomFormBuilder() {
