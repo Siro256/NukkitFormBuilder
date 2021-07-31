@@ -173,5 +173,9 @@ data class FormResponseCustomWithCallback(
     @get:JvmName("getStepSliderResponses_") @SerializedName("stepSliderResponses_") val stepSliderResponses: HashMap<Int, FormResponseData>,
     @get:JvmName("getToggleResponses_") @SerializedName("toggleResponses_") val toggleResponses: HashMap<Int, Boolean>,
     @get:JvmName("getLabelResponses_") @SerializedName("labelResponses_") val labelResponses: HashMap<Int, String>,
-    val onClick: (PlayerFormRespondedEvent) -> Unit
-): FormResponseCustom(responses, dropdownResponses, inputResponses, sliderResponses, stepSliderResponses, toggleResponses, labelResponses)
+    private val onClick: (PlayerFormRespondedEvent) -> Unit
+): FormResponseCustom(responses, dropdownResponses, inputResponses, sliderResponses, stepSliderResponses, toggleResponses, labelResponses), FormWithCallback {
+    override fun getOnClick(): (PlayerFormRespondedEvent) -> Unit {
+        return onClick
+    }
+}

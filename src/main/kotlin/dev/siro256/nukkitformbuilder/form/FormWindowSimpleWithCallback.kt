@@ -75,5 +75,9 @@ class FormWindowSimpleWithCallback(
 data class FormResponseSimpleWithCallback(
     @get:JvmName("getClickedButtonId_") @SerializedName("clickedButtonId_") val clickedButtonId: Int,
     @get:JvmName("getClickedButton_") @SerializedName("clickedButton_") val clickedButton: ElementButton?,
-    val onClick: (PlayerFormRespondedEvent) -> Unit
-): FormResponseSimple(clickedButtonId, clickedButton)
+    private val onClick: (PlayerFormRespondedEvent) -> Unit
+): FormResponseSimple(clickedButtonId, clickedButton), FormWithCallback {
+    override fun getOnClick(): (PlayerFormRespondedEvent) -> Unit {
+        return onClick
+    }
+}
